@@ -16,20 +16,24 @@ import { AuditTimeline } from '@/components/AuditTimeline';
 import { FairUseExplanationModal } from '@/components/FairUseExplanationModal';
 import { 
   Search, 
-  Filter, 
   Layers, 
   CalendarClock, 
   ShieldCheck, 
   AlertTriangle, 
   CheckCircle2, 
   RotateCcw, 
-  ArrowRight,
   Sparkles,
   Building2,
-  Lock,
   Unlock,
   Clock,
-  HelpCircle
+  Check,
+  ChevronRight,
+  X,
+  Compass,
+  Cpu,
+  Microscope,
+  Video,
+  Wrench
 } from 'lucide-react';
 
 export default function Home() {
@@ -39,6 +43,14 @@ export default function Home() {
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
   const [selectedDept, setSelectedDept] = useState<string>('all');
+
+  // Floating Toast Notification
+  const [toastMessage, setToastMessage] = useState<string | null>(null);
+
+  const showToast = (msg: string) => {
+    setToastMessage(msg);
+    setTimeout(() => setToastMessage(null), 4500);
+  };
 
   // Modal States
   const [eligibilityResource, setEligibilityResource] = useState<Resource | null>(null);
@@ -61,20 +73,29 @@ export default function Home() {
     return matchesSearch && matchesCategory && matchesDept;
   });
 
-  const categories = ['all', 'Laboratory', 'Fabrication', 'Media & AV', 'Testing & Metrology'];
-  const departments = ['all', 'Robotics & Fabrication Institute', 'Materials Science & Bioengineering', 'Design & Architecture Hub', 'Media & Performing Arts'];
+  const categoryItems = [
+    { id: 'all', label: 'All Resources', icon: Compass },
+    { id: 'Laboratory', label: 'Laboratory', icon: Microscope },
+    { id: 'Fabrication', label: 'Fabrication', icon: Wrench },
+    { id: 'Media & AV', label: 'Media & AV', icon: Video },
+    { id: 'Testing & Metrology', label: 'Testing & Metrology', icon: Cpu },
+  ];
 
   // Current user's bookings
   const myBookings = store.bookings.filter(b => b.user_id === store.currentUser.id);
 
   return (
-    <div className="min-h-screen bg-slate-950 text-slate-100 flex flex-col font-sans">
+    <div className="min-h-screen text-slate-100 flex flex-col font-sans selection:bg-teal-500/30 selection:text-teal-200">
       
       {/* 1. Judge Demo Header (1-Click Switcher) */}
       <RoleSwitcher
         currentUser={store.currentUser}
         profiles={store.profiles}
-        onSwitch={store.switchUser}
+        onSwitch={(userId) => {
+          store.switchUser(userId);
+          const target = store.profiles.find(p => p.id === userId);
+          showToast(`Switched active persona to ${target?.full_name} (${target?.role.toUpperCase()})`);
+        }}
       />
 
       {/* 2. Top Navigation */}
@@ -96,74 +117,120 @@ export default function Home() {
         {activeTab === 'browse' && (
           <div className="space-y-8">
             
-            {/* Hero / Banner */}
-            <div className="relative rounded-2xl bg-gradient-to-r from-slate-900 via-slate-900 to-teal-950/60 p-8 border border-slate-800 overflow-hidden shadow-2xl">
-              <div className="relative z-10 max-w-2xl space-y-3">
-                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-teal-500/10 border border-teal-500/20 text-xs font-semibold text-teal-400">
-                  <Sparkles className="w-3.5 h-3.5" />
-                  Institutional Resource Sharing & Safety Protocol
+            {/* Hero / Banner with High-Tech Ambient Depth */}
+            <div className="relative rounded-3xl bg-gradient-to-br from-slate-900/90 via-slate-900/60 to-teal-950/40 p-8 sm:p-10 border border-slate-800/80 overflow-hidden shadow-2xl backdrop-blur-xl">
+              
+              {/* Background ambient radial light */}
+              <div className="absolute top-0 right-0 w-96 h-96 bg-teal-500/10 rounded-full blur-3xl pointer-events-none -mr-20 -mt-20" />
+              <div className="absolute bottom-0 left-1/3 w-80 h-80 bg-indigo-500/10 rounded-full blur-3xl pointer-events-none" />
+
+              <div className="relative z-10 max-w-3xl space-y-4">
+                <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-gradient-to-r from-teal-500/20 via-emerald-500/15 to-transparent border border-teal-500/30 text-xs font-bold text-teal-300 shadow-sm shadow-teal-500/10">
+                  <Sparkles className="w-3.5 h-3.5 text-teal-400" />
+                  <span>Institutional Resource Sharing & Safety Protocol</span>
                 </div>
-                <h1 className="text-3xl sm:text-4xl font-black text-white tracking-tight">
-                  Unlock High-Value Laboratories & Equipment
+                
+                <h1 className="text-3xl sm:text-5xl font-black text-white tracking-tight leading-tight">
+                  Unlock Underused <span className="gradient-text">Equipment & Spaces</span>
                 </h1>
-                <p className="text-sm text-slate-300 leading-relaxed">
-                  Safely reserve specialized CNC milling centers, cleanrooms, electron microscopes, and cinema rigs with automated operator eligibility checks and condition audit trails.
+                
+                <p className="text-sm sm:text-base text-slate-300 leading-relaxed max-w-2xl">
+                  Safely share high-value CNC milling centers, scanning electron microscopes, laser cutters, and cinema rigs with automated operator eligibility, digital condition baselines, and explainable fair allocation.
                 </p>
 
-                {/* KPI Metrics */}
-                <div className="pt-4 grid grid-cols-2 sm:grid-cols-4 gap-4 text-xs">
-                  <div className="bg-slate-950/60 p-3 rounded-xl border border-slate-800">
-                    <p className="text-slate-400">Listed Resources</p>
-                    <p className="text-xl font-bold text-white mt-0.5">{store.resources.length}</p>
-                  </div>
-                  <div className="bg-slate-950/60 p-3 rounded-xl border border-slate-800">
-                    <p className="text-slate-400">Available Now</p>
-                    <p className="text-xl font-bold text-teal-400 mt-0.5">
-                      {store.resources.filter(r => r.availability_status === 'available').length}
-                    </p>
-                  </div>
-                  <div className="bg-slate-950/60 p-3 rounded-xl border border-slate-800">
-                    <p className="text-slate-400">Active Bookings</p>
-                    <p className="text-xl font-bold text-amber-400 mt-0.5">
-                      {store.bookings.filter(b => b.status === 'approved' || b.status === 'checked_in').length}
-                    </p>
-                  </div>
-                  <div className="bg-slate-950/60 p-3 rounded-xl border border-slate-800">
-                    <p className="text-slate-400">Audited Events</p>
-                    <p className="text-xl font-bold text-indigo-400 mt-0.5">{store.auditLogs.length}</p>
+                {/* 10-Step Interactive Lifecycle Indicator */}
+                <div className="pt-2">
+                  <p className="text-[11px] font-bold uppercase tracking-wider text-slate-400 mb-2">
+                    Complete 10-Step Sharing Lifecycle:
+                  </p>
+                  <div className="flex flex-wrap items-center gap-1.5 text-[11px]">
+                    {[
+                      '1. Listing',
+                      '2. Eligibility Check',
+                      '3. Request',
+                      '4. Verification',
+                      '5. Manager Review',
+                      '6. Allocation',
+                      '7. Check-In Baseline',
+                      '8. Return Comparison',
+                      '9. Incident Handling',
+                      '10. Audit Ledger',
+                    ].map((step, idx) => (
+                      <span 
+                        key={idx}
+                        className="bg-slate-950/70 text-slate-300 border border-slate-800 px-2.5 py-1 rounded-md font-medium flex items-center gap-1 shadow-sm"
+                      >
+                        <Check className="w-3 h-3 text-teal-400 stroke-[3]" />
+                        {step}
+                      </span>
+                    ))}
                   </div>
                 </div>
+
+                {/* KPI Metrics Cards */}
+                <div className="pt-4 grid grid-cols-2 sm:grid-cols-4 gap-3 text-xs">
+                  <div className="glass-card p-3.5 rounded-2xl border border-slate-800/80">
+                    <p className="text-slate-400 font-medium">Listed Resources</p>
+                    <p className="text-2xl font-black text-white mt-1">{store.resources.length}</p>
+                    <span className="text-[10px] text-teal-400 font-semibold">Across 4 Depts</span>
+                  </div>
+                  <div className="glass-card p-3.5 rounded-2xl border border-slate-800/80">
+                    <p className="text-slate-400 font-medium">Available Now</p>
+                    <p className="text-2xl font-black text-teal-400 mt-1">
+                      {store.resources.filter(r => r.availability_status === 'available').length}
+                    </p>
+                    <span className="text-[10px] text-emerald-400 font-semibold">Ready for booking</span>
+                  </div>
+                  <div className="glass-card p-3.5 rounded-2xl border border-slate-800/80">
+                    <p className="text-slate-400 font-medium">Active Bookings</p>
+                    <p className="text-2xl font-black text-amber-400 mt-1">
+                      {store.bookings.filter(b => b.status === 'approved' || b.status === 'checked_in').length}
+                    </p>
+                    <span className="text-[10px] text-amber-400 font-semibold">In session or approved</span>
+                  </div>
+                  <div className="glass-card p-3.5 rounded-2xl border border-slate-800/80">
+                    <p className="text-slate-400 font-medium">Audited Events</p>
+                    <p className="text-2xl font-black text-indigo-400 mt-1">{store.auditLogs.length}</p>
+                    <span className="text-[10px] text-indigo-400 font-semibold">Tamper-evident logs</span>
+                  </div>
+                </div>
+
               </div>
             </div>
 
             {/* Search & Filter Bar */}
-            <div className="flex flex-wrap items-center justify-between gap-4 bg-slate-900 p-4 rounded-xl border border-slate-800">
-              <div className="relative flex-1 min-w-[260px]">
-                <Search className="w-4 h-4 text-slate-500 absolute left-3.5 top-3" />
+            <div className="flex flex-wrap items-center justify-between gap-4 bg-slate-900/80 p-4 rounded-2xl border border-slate-800/80 shadow-lg backdrop-blur-md">
+              <div className="relative flex-1 min-w-[280px]">
+                <Search className="w-4 h-4 text-slate-400 absolute left-3.5 top-3.5" />
                 <input
                   type="text"
-                  placeholder="Search equipment, labs, tools, or locations..."
+                  placeholder="Search equipment, laboratories, tools, or locations (e.g. CNC, SEM, Laser)..."
                   value={searchQuery}
                   onChange={e => setSearchQuery(e.target.value)}
-                  className="w-full pl-10 pr-4 py-2 bg-slate-950 border border-slate-800 rounded-lg text-xs text-white placeholder-slate-500 focus:outline-none focus:border-teal-500"
+                  className="w-full pl-10 pr-4 py-2.5 bg-slate-950 border border-slate-800 rounded-xl text-xs text-white placeholder-slate-500 focus:outline-none focus:border-teal-500 transition-colors shadow-inner"
                 />
               </div>
 
-              {/* Category Pills */}
-              <div className="flex flex-wrap items-center gap-1.5 text-xs">
-                {categories.map(cat => (
-                  <button
-                    key={cat}
-                    onClick={() => setSelectedCategory(cat)}
-                    className={`px-3 py-1.5 rounded-lg capitalize transition-colors font-medium ${
-                      selectedCategory === cat
-                        ? 'bg-teal-500 text-slate-950 font-bold'
-                        : 'bg-slate-800 text-slate-400 hover:text-white hover:bg-slate-700'
-                    }`}
-                  >
-                    {cat}
-                  </button>
-                ))}
+              {/* Category Pills with Icons */}
+              <div className="flex flex-wrap items-center gap-2 text-xs">
+                {categoryItems.map(item => {
+                  const Icon = item.icon;
+                  const isSelected = selectedCategory === item.id;
+                  return (
+                    <button
+                      key={item.id}
+                      onClick={() => setSelectedCategory(item.id)}
+                      className={`px-3 py-2 rounded-xl transition-all font-semibold flex items-center gap-1.5 ${
+                        isSelected
+                          ? 'bg-gradient-to-r from-teal-500 to-emerald-500 text-slate-950 font-bold shadow-md shadow-teal-500/20'
+                          : 'bg-slate-950/80 text-slate-400 hover:text-white hover:bg-slate-800 border border-slate-800'
+                      }`}
+                    >
+                      <Icon className="w-3.5 h-3.5" />
+                      <span>{item.label}</span>
+                    </button>
+                  );
+                })}
               </div>
             </div>
 
@@ -205,7 +272,7 @@ export default function Home() {
             </div>
 
             {myBookings.length === 0 ? (
-              <div className="p-12 text-center bg-slate-900 border border-slate-800 rounded-2xl">
+              <div className="p-12 text-center bg-slate-900 border border-slate-800 rounded-3xl">
                 <CalendarClock className="w-12 h-12 text-slate-600 mx-auto mb-3" />
                 <h3 className="text-base font-bold text-white">No Reservations Yet</h3>
                 <p className="text-xs text-slate-400 max-w-sm mx-auto mt-1 mb-4">
@@ -213,7 +280,7 @@ export default function Home() {
                 </p>
                 <button
                   onClick={() => setActiveTab('browse')}
-                  className="px-4 py-2 bg-teal-500 text-slate-950 font-bold text-xs rounded-lg hover:bg-teal-400 transition-colors"
+                  className="px-4 py-2 bg-gradient-to-r from-teal-500 to-emerald-500 text-slate-950 font-bold text-xs rounded-xl shadow-lg transition-transform hover:scale-105"
                 >
                   Browse Available Equipment
                 </button>
@@ -232,51 +299,51 @@ export default function Home() {
                   return (
                     <div
                       key={booking.id}
-                      className="bg-slate-900 border border-slate-800 rounded-2xl p-6 hover:border-slate-700 transition-all shadow-xl"
+                      className="bg-slate-900/80 border border-slate-800 rounded-3xl p-6 hover:border-slate-700 transition-all shadow-xl backdrop-blur-md"
                     >
                       <div className="flex flex-wrap items-start justify-between gap-4">
                         
                         {/* Info */}
-                        <div className="space-y-2 max-w-xl">
+                        <div className="space-y-2.5 max-w-xl">
                           <div className="flex flex-wrap items-center gap-2">
                             {booking.status === 'approved' && (
-                              <span className="bg-emerald-950/80 text-emerald-300 border border-emerald-700/50 text-xs px-2.5 py-0.5 rounded-full font-bold flex items-center gap-1">
+                              <span className="bg-emerald-950/80 text-emerald-300 border border-emerald-600/50 text-xs px-3 py-1 rounded-full font-bold flex items-center gap-1.5 shadow-sm">
                                 <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400" />
                                 Approved — Ready for Check-In
                               </span>
                             )}
                             {booking.status === 'checked_in' && (
-                              <span className="bg-teal-950/80 text-teal-300 border border-teal-700/50 text-xs px-2.5 py-0.5 rounded-full font-bold flex items-center gap-1 animate-pulse">
+                              <span className="bg-teal-950/80 text-teal-300 border border-teal-600/50 text-xs px-3 py-1 rounded-full font-bold flex items-center gap-1.5 animate-pulse shadow-sm">
                                 <Unlock className="w-3.5 h-3.5 text-teal-400" />
                                 Checked In (Session Active)
                               </span>
                             )}
                             {booking.status === 'pending_approval' && (
-                              <span className="bg-amber-950/80 text-amber-300 border border-amber-700/50 text-xs px-2.5 py-0.5 rounded-full font-bold flex items-center gap-1">
+                              <span className="bg-amber-950/80 text-amber-300 border border-amber-600/50 text-xs px-3 py-1 rounded-full font-bold flex items-center gap-1.5 shadow-sm">
                                 <Clock className="w-3.5 h-3.5 text-amber-400" />
                                 Awaiting Manager Approval
                               </span>
                             )}
                             {booking.status === 'waitlisted' && (
-                              <span className="bg-amber-950/80 text-amber-300 border border-amber-700/50 text-xs px-2.5 py-0.5 rounded-full font-bold flex items-center gap-1">
+                              <span className="bg-amber-950/80 text-amber-300 border border-amber-600/50 text-xs px-3 py-1 rounded-full font-bold flex items-center gap-1.5 shadow-sm">
                                 <Clock className="w-3.5 h-3.5 text-amber-400" />
                                 Waitlist Position #{booking.waitlist_position}
                               </span>
                             )}
                             {booking.status === 'returned' && (
-                              <span className="bg-slate-800 text-slate-300 border border-slate-700 text-xs px-2.5 py-0.5 rounded-full font-medium flex items-center gap-1">
+                              <span className="bg-slate-800 text-slate-300 border border-slate-700 text-xs px-3 py-1 rounded-full font-medium flex items-center gap-1.5 shadow-sm">
                                 <CheckCircle2 className="w-3.5 h-3.5 text-teal-400" />
                                 Completed & Returned
                               </span>
                             )}
                             {booking.status === 'incident_flagged' && (
-                              <span className="bg-red-950/80 text-red-300 border border-red-700/50 text-xs px-2.5 py-0.5 rounded-full font-bold flex items-center gap-1">
+                              <span className="bg-red-950/80 text-red-300 border border-red-700/50 text-xs px-3 py-1 rounded-full font-bold flex items-center gap-1.5 shadow-sm">
                                 <AlertTriangle className="w-3.5 h-3.5 text-red-400" />
                                 Incident Flagged Under Review
                               </span>
                             )}
                             {booking.status === 'cancelled' && (
-                              <span className="bg-slate-800 text-slate-400 text-xs px-2.5 py-0.5 rounded-full font-medium">
+                              <span className="bg-slate-800 text-slate-400 text-xs px-3 py-1 rounded-full font-medium">
                                 Cancelled
                               </span>
                             )}
@@ -290,7 +357,7 @@ export default function Home() {
                             Location: {resource?.location} • Department: {resource?.department}
                           </p>
 
-                          <div className="p-3 bg-slate-950/70 rounded-xl border border-slate-800 text-xs space-y-1">
+                          <div className="p-3.5 bg-slate-950/80 rounded-2xl border border-slate-800 text-xs space-y-1.5">
                             <p className="text-slate-300 font-medium">
                               📅 Window: {new Date(booking.start_time).toLocaleString()} → {new Date(booking.end_time).toLocaleTimeString()}
                             </p>
@@ -306,13 +373,13 @@ export default function Home() {
                         </div>
 
                         {/* Interactive Handover Actions */}
-                        <div className="flex flex-col gap-2 shrink-0 min-w-[200px]">
+                        <div className="flex flex-col gap-2 shrink-0 min-w-[210px]">
                           
                           {/* Step 7: Check-In Button */}
                           {booking.status === 'approved' && (
                             <button
                               onClick={() => setCheckInBooking(booking)}
-                              className="w-full py-2.5 px-4 bg-teal-500 hover:bg-teal-400 text-slate-950 font-bold text-xs rounded-xl shadow-lg shadow-teal-500/25 transition-all flex items-center justify-center gap-1.5"
+                              className="w-full py-3 px-4 bg-gradient-to-r from-teal-500 to-emerald-500 hover:from-teal-400 hover:to-emerald-400 text-slate-950 font-bold text-xs rounded-xl shadow-lg shadow-teal-500/25 transition-all flex items-center justify-center gap-1.5"
                             >
                               <CheckCircle2 className="w-4 h-4" />
                               Step 7: Check-In Baseline
@@ -324,14 +391,14 @@ export default function Home() {
                             <>
                               <button
                                 onClick={() => setCheckOutBooking(booking)}
-                                className="w-full py-2.5 px-4 bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold text-xs rounded-xl shadow-lg shadow-emerald-500/25 transition-all flex items-center justify-center gap-1.5"
+                                className="w-full py-3 px-4 bg-gradient-to-r from-emerald-500 to-teal-400 hover:from-emerald-400 hover:to-teal-300 text-slate-950 font-bold text-xs rounded-xl shadow-lg shadow-emerald-500/25 transition-all flex items-center justify-center gap-1.5"
                               >
                                 <RotateCcw className="w-4 h-4" />
                                 Step 8: Return Inspection
                               </button>
                               <button
                                 onClick={() => setIncidentBooking(booking)}
-                                className="w-full py-2 px-3 bg-red-950/80 hover:bg-red-900/80 text-red-300 border border-red-700/50 font-semibold text-xs rounded-xl transition-colors flex items-center justify-center gap-1.5"
+                                className="w-full py-2.5 px-3 bg-red-950/80 hover:bg-red-900/80 text-red-300 border border-red-700/50 font-semibold text-xs rounded-xl transition-colors flex items-center justify-center gap-1.5"
                               >
                                 <AlertTriangle className="w-3.5 h-3.5" />
                                 Report Damage / Delay
@@ -342,7 +409,10 @@ export default function Home() {
                           {/* Cancel button (with auto waitlist promotion) */}
                           {(booking.status === 'pending_approval' || booking.status === 'waitlisted' || booking.status === 'approved') && (
                             <button
-                              onClick={() => store.cancelBooking(booking.id)}
+                              onClick={() => {
+                                store.cancelBooking(booking.id);
+                                showToast('Reservation cancelled. Waitlist candidates auto-promoted.');
+                              }}
                               className="w-full py-2 px-3 bg-slate-800 hover:bg-slate-700 text-slate-400 hover:text-red-400 text-xs font-medium rounded-xl border border-slate-700 transition-colors"
                             >
                               Cancel Reservation
@@ -351,13 +421,13 @@ export default function Home() {
 
                           {/* Condition Record Badges if completed */}
                           {checkIn && (
-                            <div className="p-2.5 bg-slate-950/50 border border-slate-800 rounded-lg text-[11px] text-slate-300">
+                            <div className="p-2.5 bg-slate-950/60 border border-slate-800 rounded-xl text-[11px] text-slate-300">
                               <span className="text-teal-400 font-semibold">Check-in Baseline:</span> {checkIn.physical_condition.toUpperCase()} ({checkIn.cleanliness_rating}/5★)
                             </div>
                           )}
 
                           {returnOut && (
-                            <div className="p-2.5 bg-slate-950/50 border border-slate-800 rounded-lg text-[11px] text-slate-300">
+                            <div className="p-2.5 bg-slate-950/60 border border-slate-800 rounded-xl text-[11px] text-slate-300">
                               <span className="text-emerald-400 font-semibold">Return Sign-off:</span> {returnOut.physical_condition.toUpperCase()} ({returnOut.cleanliness_rating}/5★)
                             </div>
                           )}
@@ -382,8 +452,14 @@ export default function Home() {
             resources={store.resources}
             profiles={store.profiles}
             credentials={store.credentials}
-            onReview={store.reviewBooking}
-            onVerifyCredential={store.verifyCredential}
+            onReview={(bId, status, reason) => {
+              store.reviewBooking(bId, status, reason);
+              showToast(`Reservation ${status.toUpperCase()}: ${reason}`);
+            }}
+            onVerifyCredential={(cId, status) => {
+              store.verifyCredential(cId, status);
+              showToast(`Credential marked as ${status.toUpperCase()}`);
+            }}
           />
         )}
 
@@ -408,8 +484,8 @@ export default function Home() {
             </div>
 
             {store.incidents.length === 0 ? (
-              <div className="p-12 text-center bg-slate-900 border border-slate-800 rounded-2xl">
-                <CheckCircle2 className="w-12 h-12 text-emerald-400 mx-auto mb-3" />
+              <div className="p-12 text-center bg-slate-900 border border-slate-800 rounded-3xl">
+                <CheckCircle2 className="w-12 h-12 text-emerald-400 mx-auto mb-3 opacity-80" />
                 <h3 className="text-base font-bold text-white">Zero Active Incidents</h3>
                 <p className="text-xs text-slate-400 max-w-sm mx-auto mt-1">
                   All shared campus equipment is operating within normal parameters without pending safety flags.
@@ -422,7 +498,7 @@ export default function Home() {
                   const reporter = store.profiles.find(p => p.id === inc.reporter_id);
 
                   return (
-                    <div key={inc.id} className="p-5 bg-slate-900 border border-red-900/30 rounded-2xl flex flex-wrap items-start justify-between gap-4">
+                    <div key={inc.id} className="p-5 bg-slate-900 border border-red-900/30 rounded-3xl flex flex-wrap items-start justify-between gap-4">
                       <div className="space-y-1.5 max-w-xl">
                         <div className="flex items-center gap-2 text-xs">
                           <span className="bg-red-500/20 text-red-300 border border-red-500/40 px-2.5 py-0.5 rounded-full font-bold uppercase">
@@ -466,6 +542,26 @@ export default function Home() {
       </main>
 
       {/* ======================================================== */}
+      {/* FLOATING TOAST NOTIFICATION                              */}
+      {/* ======================================================== */}
+      {toastMessage && (
+        <div className="fixed bottom-6 right-6 z-50 animate-in slide-in-from-bottom-5 duration-300">
+          <div className="bg-slate-900 border border-teal-500/50 text-white px-4 py-3 rounded-2xl shadow-2xl flex items-center gap-3 text-xs max-w-sm backdrop-blur-xl">
+            <div className="w-7 h-7 rounded-full bg-teal-500/20 border border-teal-500/40 flex items-center justify-center shrink-0">
+              <Sparkles className="w-4 h-4 text-teal-400" />
+            </div>
+            <span className="font-medium text-slate-200 flex-1 leading-snug">{toastMessage}</span>
+            <button 
+              onClick={() => setToastMessage(null)}
+              className="text-slate-500 hover:text-white p-1 rounded-lg"
+            >
+              <X className="w-3.5 h-3.5" />
+            </button>
+          </div>
+        </div>
+      )}
+
+      {/* ======================================================== */}
       {/* MODALS & OVERLAYS                                        */}
       {/* ======================================================== */}
 
@@ -477,7 +573,10 @@ export default function Home() {
         currentUser={store.currentUser}
         credentials={store.credentials}
         bookings={store.bookings}
-        onUploadCredential={store.uploadCredential}
+        onUploadCredential={(name, by) => {
+          store.uploadCredential(name, by);
+          showToast(`Safety credential "${name}" submitted for Muskan Gupta's review.`);
+        }}
         onRequestBooking={res => {
           setEligibilityResource(null);
           setBookingResource(res);
@@ -491,7 +590,10 @@ export default function Home() {
         onClose={() => setBookingResource(null)}
         currentUser={store.currentUser}
         bookings={store.bookings}
-        onSubmitBooking={store.requestBooking}
+        onSubmitBooking={data => {
+          store.requestBooking(data);
+          showToast('Reservation submitted! Check the "Reservations" tab or switch to Muskan Gupta to approve.');
+        }}
       />
 
       {/* 3. Check-In Modal */}
@@ -500,7 +602,10 @@ export default function Home() {
         resource={checkInBooking ? store.resources.find(r => r.id === checkInBooking.resource_id) || null : null}
         isOpen={Boolean(checkInBooking)}
         onClose={() => setCheckInBooking(null)}
-        onSubmit={store.submitCheckIn}
+        onSubmit={(bId, rep) => {
+          store.submitCheckIn(bId, rep);
+          showToast('Check-in baseline recorded! Resource unlocked.');
+        }}
       />
 
       {/* 4. Check-Out Modal */}
@@ -510,7 +615,10 @@ export default function Home() {
         checkInReport={checkOutBooking ? store.conditionReports.find(cr => cr.booking_id === checkOutBooking.id && cr.stage === 'check_in') : undefined}
         isOpen={Boolean(checkOutBooking)}
         onClose={() => setCheckOutBooking(null)}
-        onSubmit={store.submitReturn}
+        onSubmit={(bId, rep) => {
+          store.submitReturn(bId, rep);
+          showToast('Return completed! Security deposit released and +2 FairShare points awarded.');
+        }}
         onOpenIncident={b => setIncidentBooking(b)}
       />
 
@@ -520,7 +628,10 @@ export default function Home() {
         resource={incidentBooking ? store.resources.find(r => r.id === incidentBooking.resource_id) || null : null}
         isOpen={Boolean(incidentBooking)}
         onClose={() => setIncidentBooking(null)}
-        onSubmit={store.fileIncident}
+        onSubmit={data => {
+          store.fileIncident(data);
+          showToast('Incident filed and flagged for institutional safety review.');
+        }}
       />
 
       {/* 6. Fair-Use Explainability Modal */}
@@ -531,7 +642,7 @@ export default function Home() {
       />
 
       {/* Footer */}
-      <footer className="border-t border-slate-900 bg-slate-950 py-6 text-center text-xs text-slate-500">
+      <footer className="border-t border-slate-900 bg-slate-950/80 py-6 text-center text-xs text-slate-500">
         <p>EquiShare — Built for CodeHack Hackathon. Trusted Institutional Resource & Equipment Governance Platform.</p>
       </footer>
 

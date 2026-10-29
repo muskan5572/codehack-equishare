@@ -9,7 +9,7 @@ import {
   History, 
   AlertTriangle,
   HelpCircle,
-  FileCheck
+  Sparkles
 } from 'lucide-react';
 import { Profile, Booking, Incident } from '@/types';
 
@@ -38,52 +38,54 @@ export const Navbar: React.FC<NavbarProps> = ({
   ).length;
 
   return (
-    <header className="bg-slate-900 border-b border-slate-800 sticky top-10 z-40">
+    <header className="bg-slate-950/70 border-b border-slate-800/80 sticky top-9 z-40 backdrop-blur-xl">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           
           {/* Logo & Brand */}
-          <div className="flex items-center gap-3 cursor-pointer" onClick={() => setActiveTab('browse')}>
-            <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-teal-500 to-emerald-400 flex items-center justify-center shadow-lg shadow-teal-500/20">
-              <Building2 className="w-6 h-6 text-slate-950 font-bold" />
+          <div className="flex items-center gap-3 cursor-pointer group" onClick={() => setActiveTab('browse')}>
+            <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-teal-500 via-emerald-400 to-cyan-400 flex items-center justify-center shadow-lg shadow-teal-500/20 group-hover:scale-105 transition-transform">
+              <Building2 className="w-5 h-5 text-slate-950 font-black" />
             </div>
             <div>
               <div className="flex items-center gap-2">
-                <span className="text-xl font-black tracking-tight text-white">EquiShare</span>
-                <span className="text-[10px] bg-teal-500/10 text-teal-400 font-semibold px-2 py-0.5 rounded border border-teal-500/20">
+                <span className="text-xl font-black tracking-tight text-white group-hover:text-teal-300 transition-colors">
+                  Equi<span className="text-teal-400">Share</span>
+                </span>
+                <span className="text-[10px] bg-gradient-to-r from-teal-500/20 to-emerald-500/20 text-teal-300 font-bold px-2 py-0.5 rounded-full border border-teal-500/30">
                   Institutional
                 </span>
               </div>
-              <p className="text-[11px] text-slate-400">Trusted Campus & Lab Resource Governance</p>
+              <p className="text-[11px] text-slate-400">Trusted Campus & Lab Resource Sharing</p>
             </div>
           </div>
 
           {/* Navigation Tabs */}
-          <nav className="flex items-center space-x-1 sm:space-x-2">
+          <nav className="flex items-center space-x-1 sm:space-x-1.5 bg-slate-900/60 p-1 rounded-xl border border-slate-800/80">
             <button
               onClick={() => setActiveTab('browse')}
-              className={`flex items-center gap-2 px-3 py-2 rounded-lg text-xs sm:text-sm font-medium transition-all ${
+              className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs sm:text-sm font-semibold transition-all ${
                 activeTab === 'browse'
-                  ? 'bg-slate-800 text-teal-400 border border-slate-700 shadow-sm'
-                  : 'text-slate-400 hover:text-slate-200 hover:bg-slate-800/60'
+                  ? 'bg-slate-800 text-teal-300 shadow-md border border-slate-700/80'
+                  : 'text-slate-400 hover:text-slate-200 hover:bg-slate-800/40'
               }`}
             >
-              <Layers className="w-4 h-4" />
+              <Layers className="w-4 h-4 text-teal-400" />
               <span>Catalog</span>
             </button>
 
             <button
               onClick={() => setActiveTab('my-bookings')}
-              className={`flex items-center gap-2 px-3 py-2 rounded-lg text-xs sm:text-sm font-medium transition-all relative ${
+              className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs sm:text-sm font-semibold transition-all relative ${
                 activeTab === 'my-bookings'
-                  ? 'bg-slate-800 text-teal-400 border border-slate-700 shadow-sm'
-                  : 'text-slate-400 hover:text-slate-200 hover:bg-slate-800/60'
+                  ? 'bg-slate-800 text-teal-300 shadow-md border border-slate-700/80'
+                  : 'text-slate-400 hover:text-slate-200 hover:bg-slate-800/40'
               }`}
             >
-              <CalendarClock className="w-4 h-4" />
+              <CalendarClock className="w-4 h-4 text-emerald-400" />
               <span>Reservations</span>
               {myBookingsCount > 0 && (
-                <span className="ml-1 bg-teal-500/20 text-teal-300 text-[10px] px-1.5 py-0.2 rounded-full font-bold">
+                <span className="ml-1 bg-teal-500 text-slate-950 text-[10px] px-1.5 py-0.2 rounded-full font-black">
                   {myBookingsCount}
                 </span>
               )}
@@ -92,16 +94,16 @@ export const Navbar: React.FC<NavbarProps> = ({
             {/* Manager Approvals Tab */}
             <button
               onClick={() => setActiveTab('manager')}
-              className={`flex items-center gap-2 px-3 py-2 rounded-lg text-xs sm:text-sm font-medium transition-all relative ${
+              className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs sm:text-sm font-semibold transition-all relative ${
                 activeTab === 'manager'
-                  ? 'bg-slate-800 text-amber-400 border border-slate-700 shadow-sm'
-                  : 'text-slate-400 hover:text-slate-200 hover:bg-slate-800/60'
+                  ? 'bg-slate-800 text-amber-300 shadow-md border border-slate-700/80'
+                  : 'text-slate-400 hover:text-slate-200 hover:bg-slate-800/40'
               }`}
             >
-              <CheckSquare2 className="w-4 h-4" />
-              <span>Review & Approvals</span>
+              <CheckSquare2 className="w-4 h-4 text-amber-400" />
+              <span>Approvals</span>
               {pendingCount > 0 && (
-                <span className="ml-1 bg-amber-500 text-slate-950 text-[10px] px-1.5 py-0.2 rounded-full font-bold animate-pulse">
+                <span className="ml-1 bg-amber-400 text-slate-950 text-[10px] px-1.5 py-0.2 rounded-full font-black animate-bounce">
                   {pendingCount}
                 </span>
               )}
@@ -110,16 +112,16 @@ export const Navbar: React.FC<NavbarProps> = ({
             {/* Incident Reports Tab */}
             <button
               onClick={() => setActiveTab('incidents')}
-              className={`flex items-center gap-2 px-3 py-2 rounded-lg text-xs sm:text-sm font-medium transition-all ${
+              className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs sm:text-sm font-semibold transition-all ${
                 activeTab === 'incidents'
-                  ? 'bg-slate-800 text-red-400 border border-slate-700 shadow-sm'
-                  : 'text-slate-400 hover:text-slate-200 hover:bg-slate-800/60'
+                  ? 'bg-slate-800 text-red-300 shadow-md border border-slate-700/80'
+                  : 'text-slate-400 hover:text-slate-200 hover:bg-slate-800/40'
               }`}
             >
-              <AlertTriangle className="w-4 h-4" />
+              <AlertTriangle className="w-4 h-4 text-red-400" />
               <span className="hidden md:inline">Incidents</span>
               {activeIncidentCount > 0 && (
-                <span className="ml-1 bg-red-500/20 text-red-300 text-[10px] px-1.5 py-0.2 rounded-full font-bold">
+                <span className="ml-1 bg-red-500 text-white text-[10px] px-1.5 py-0.2 rounded-full font-bold">
                   {activeIncidentCount}
                 </span>
               )}
@@ -128,13 +130,13 @@ export const Navbar: React.FC<NavbarProps> = ({
             {/* Audit Log Tab */}
             <button
               onClick={() => setActiveTab('audit')}
-              className={`flex items-center gap-2 px-3 py-2 rounded-lg text-xs sm:text-sm font-medium transition-all ${
+              className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs sm:text-sm font-semibold transition-all ${
                 activeTab === 'audit'
-                  ? 'bg-slate-800 text-indigo-400 border border-slate-700 shadow-sm'
-                  : 'text-slate-400 hover:text-slate-200 hover:bg-slate-800/60'
+                  ? 'bg-slate-800 text-indigo-300 shadow-md border border-slate-700/80'
+                  : 'text-slate-400 hover:text-slate-200 hover:bg-slate-800/40'
               }`}
             >
-              <History className="w-4 h-4" />
+              <History className="w-4 h-4 text-indigo-400" />
               <span className="hidden sm:inline">Audit Trail</span>
             </button>
           </nav>
@@ -143,10 +145,10 @@ export const Navbar: React.FC<NavbarProps> = ({
           <div className="flex items-center gap-2">
             <button
               onClick={onOpenExplainability}
-              className="flex items-center gap-1.5 bg-teal-500/10 hover:bg-teal-500/20 text-teal-400 px-3 py-1.5 rounded-lg text-xs font-medium border border-teal-500/30 transition-colors"
+              className="flex items-center gap-1.5 bg-gradient-to-r from-teal-500/10 to-emerald-500/10 hover:from-teal-500/20 hover:to-emerald-500/20 text-teal-300 px-3 py-1.5 rounded-xl text-xs font-semibold border border-teal-500/30 transition-all shadow-sm"
               title="Explainable allocation rules and anti-monopoly fair-use math"
             >
-              <HelpCircle className="w-4 h-4" />
+              <HelpCircle className="w-4 h-4 text-teal-400" />
               <span className="hidden sm:inline">Fair-Use Policy</span>
             </button>
           </div>
