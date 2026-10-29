@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>EquiShare - CodeHack Hackathon Project Submission</title>
+  <style>
+    @page {
+      size: A4;
+      margin: 18mm 16mm 18mm 16mm;
+    }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      color: #1e293b;
+      background: #ffffff;
+      line-height: 1.5;
+      font-size: 11pt;
+    }
+    .header {
+      border-bottom: 3px solid #f59e0b;
+      padding-bottom: 12px;
+      margin-bottom: 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+    }
+    .title {
+      font-size: 26pt;
+      font-weight: 900;
+      color: #0f172a;
+      letter-spacing: -0.5px;
+    }
+    .title span {
+      color: #d97706;
+    }
+    .tagline {
+      font-size: 11pt;
+      font-weight: 600;
+      color: #64748b;
+      margin-top: 2px;
+    }
+    .meta-box {
+      text-align: right;
+      font-size: 9pt;
+      color: #475569;
+    }
+    .meta-box strong {
+      color: #0f172a;
+    }
+    .badge-bar {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 20px;
+    }
+    .badge {
+      font-size: 8.5pt;
+      font-weight: 700;
+      padding: 4px 10px;
+      border-radius: 6px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .badge-amber {
+      background: #fef3c7;
+      color: #92400e;
+      border: 1px solid #fcd34d;
+    }
+    .badge-blue {
+      background: #e0f2fe;
+      color: #0369a1;
+      border: 1px solid #bae6fd;
+    }
+    .badge-green {
+      background: #dcfce7;
+      color: #166534;
+      border: 1px solid #bbf7d0;
+    }
+    h2 {
+      font-size: 14pt;
+      font-weight: 800;
+      color: #0f172a;
+      border-left: 4px solid #f59e0b;
+      padding-left: 8px;
+      margin-top: 18px;
+      margin-bottom: 8px;
+    }
+    h3 {
+      font-size: 11pt;
+      font-weight: 700;
+      color: #334155;
+      margin-top: 10px;
+      margin-bottom: 4px;
+    }
+    p {
+      margin-bottom: 8px;
+      color: #334155;
+    }
+    .card-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin: 12px 0;
+    }
+    .card {
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 8px;
+      padding: 12px;
+    }
+    .card h4 {
+      font-size: 10.5pt;
+      font-weight: 700;
+      color: #0f172a;
+      margin-bottom: 4px;
+    }
+    .card p {
+      font-size: 9.5pt;
+      color: #475569;
+      margin-bottom: 0;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 12px 0;
+      font-size: 9.5pt;
+    }
+    th, td {
+      border: 1px solid #cbd5e1;
+      padding: 7px 10px;
+      text-align: left;
+    }
+    th {
+      background: #f1f5f9;
+      color: #0f172a;
+      font-weight: 700;
+    }
+    tr:nth-child(even) td {
+      background: #f8fafc;
+    }
+    .workflow-steps {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 6px;
+      margin: 10px 0 16px 0;
+    }
+    .step-box {
+      background: #f8fafc;
+      border: 1px solid #cbd5e1;
+      border-radius: 6px;
+      padding: 8px 6px;
+      text-align: center;
+      font-size: 8pt;
+      font-weight: 600;
+      color: #1e293b;
+    }
+    .step-box .num {
+      display: block;
+      color: #d97706;
+      font-weight: 800;
+      font-size: 9pt;
+      margin-bottom: 2px;
+    }
+    .links-box {
+      background: #fffbeb;
+      border: 1.5px solid #fcd34d;
+      border-radius: 8px;
+      padding: 12px 14px;
+      margin-top: 14px;
+      font-size: 9.5pt;
+    }
+    .links-box a {
+      color: #b45309;
+      font-weight: 700;
+      text-decoration: underline;
+    }
+    .formula-box {
+      background: #f1f5f9;
+      border-left: 3px solid #0284c7;
+      padding: 8px 12px;
+      margin: 8px 0;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-size: 9pt;
+      color: #0f172a;
+    }
+    .page-break {
+      page-break-before: always;
+    }
+    .footer {
+      margin-top: 25px;
+      border-top: 1px solid #e2e8f0;
+      padding-top: 8px;
+      font-size: 8.5pt;
+      color: #94a3b8;
+      display: flex;
+      justify-content: space-between;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- PAGE 1 -->
+  <div class="header">
+    <div>
+      <div class="title">Equi<span>Share</span></div>
+      <div class="tagline">Institutional Shared Equipment & Resource Governance</div>
+    </div>
+    <div class="meta-box">
+      <div><strong>Event:</strong> CodeHack Hackathon (48-Hour Round)</div>
+      <div><strong>Problem:</strong> Unlock Underused Equipment & Spaces</div>
+      <div><strong>Team Lead:</strong> Muskan Gupta</div>
+    </div>
+  </div>
+
+  <div class="badge-bar">
+    <span class="badge badge-amber">Production Live on Vercel</span>
+    <span class="badge badge-blue">Full-Stack Next.js 14 & Supabase</span>
+    <span class="badge badge-green">100% Problem Statement Compliant</span>
+  </div>
+
+  <h2>1. Executive Summary & Problem Analysis</h2>
+  <p>
+    Universities, research laboratories, makerspaces, and community fabrication hubs own millions of dollars in advanced capital equipment—such as <strong>5-axis CNC machining centers, scanning electron microscopes (SEM), 120W precision laser cutters, and 8K cinema gear</strong>—that remain idle <strong>60% to 75% of the time</strong>.
+  </p>
+  <p>
+    Simultaneously, student innovators, researchers, and early-stage startup teams cannot access these tools because commercial rentals or capital purchasing are prohibitively expensive. Standard calendar booking tools fail completely in institutional environments because they ignore 4 core requirements:
+  </p>
+
+  <div class="card-grid">
+    <div class="card">
+      <h4>1. Safety & Qualification Liability</h4>
+      <p>Hazardous equipment requires verified safety credentials (e.g. Laser Safety Level 2, Cleanroom Level 100). Unverified operators cause severe accidents and equipment downtime.</p>
+    </div>
+    <div class="card">
+      <h4>2. Before/After Condition Audits</h4>
+      <p>Without a mandatory pre-use checklist and post-use return inspection, laboratories face endless disputes over who caused damage or tool degradation.</p>
+    </div>
+    <div class="card">
+      <h4>3. Monopolization & Hoarding</h4>
+      <p>Senior, well-funded research labs monopolize prime timeslots, permanently locking out emerging students and interdisciplinary teams.</p>
+    </div>
+    <div class="card">
+      <h4>4. Explainable Governance</h4>
+      <p>Decisions affecting access, safety, and deposits must never depend on unexplained automated black boxes; they require human-in-the-loop oversight and auditability.</p>
+    </div>
+  </div>
+
+  <h2>2. The EquiShare Solution & 10-Step Lifecycle</h2>
+  <p>
+    EquiShare resolves this governance gap by transforming ordinary booking into a <strong>closed-loop institutional trust protocol</strong> across the complete 10-step lifecycle:
+  </p>
+
+  <div class="workflow-steps">
+    <div class="step-box"><span class="num">01</span>Resource Listing & Rules</div>
+    <div class="step-box"><span class="num">02</span>Eligibility & Safety Check</div>
+    <div class="step-box"><span class="num">03</span>Timeslot Reservation</div>
+    <div class="step-box"><span class="num">04</span>Automated Quota Check</div>
+    <div class="step-box"><span class="num">05</span>Manager Review Desk</div>
+    <div class="step-box"><span class="num">06</span>FairShare Allocation</div>
+    <div class="step-box"><span class="num">07</span>Check-In Baseline</div>
+    <div class="step-box"><span class="num">08</span>Return Comparison</div>
+    <div class="step-box"><span class="num">09</span>Incident Governance</div>
+    <div class="step-box"><span class="num">10</span>Immutable Audit Log</div>
+  </div>
+
+  <h2>3. Key System Innovations</h2>
+  <div class="card-grid">
+    <div class="card">
+      <h4>FairShare™ Anti-Monopolization Math</h4>
+      <p>Algorithmic cooldown periods (12h–48h) prevent re-booking the same high-demand tool immediately. Offers a <strong>+10 pt collaboration bonus</strong> for cross-department requests and caps active bookings to 2.</p>
+    </div>
+    <div class="card">
+      <h4>Side-by-Side Condition Diffing</h4>
+      <p>Inspectors document baseline pre-use condition (emergency stop test, calibration, 1–5★ cleanliness, photo). Upon return, side-by-side diffing automatically flags degradation before deposit release.</p>
+    </div>
+  </div>
+
+  <div class="formula-box">
+    FairShare Score = Base Reputation (100) - Active Quota Hold - Tool Weight + Cross-Dept Bonus (+10) + Flawless Return (+2)
+  </div>
+
+  <div class="footer">
+    <span>EquiShare • CodeHack Hackathon 48-Hour Submission</span>
+    <span>Page 1 of 2</span>
+  </div>
+
+  <!-- PAGE 2 -->
+  <div class="page-break"></div>
+
+  <div class="header">
+    <div>
+      <div class="title">Equi<span>Share</span> Architecture & Evaluation Guide</div>
+      <div class="tagline">Technical Implementation, Demo Personas & Verification</div>
+    </div>
+    <div class="meta-box">
+      <div><strong>Live URL:</strong> codehack-equishare.vercel.app</div>
+      <div><strong>Repository:</strong> github.com/muskan5572/codehack-equishare</div>
+    </div>
+  </div>
+
+  <h2>4. 1-Click Judge Sandbox & Demonstration Personas</h2>
+  <p>
+    To enable instant, frictionless evaluation without manual logins, EquiShare includes a persistent <strong>Judge Sandbox Switcher</strong> at the top of every screen:
+  </p>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Persona</th>
+        <th>Institutional Role</th>
+        <th>Department</th>
+        <th>Evaluation Function</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Muskan Gupta</strong></td>
+        <td>Lab Director & Approver</td>
+        <td>Robotics & Fabrication Institute</td>
+        <td>Evaluates applicant FairShare scores, inspects credentials, inputs explainable decisions, and triggers celebratory approval confetti.</td>
+      </tr>
+      <tr>
+        <td><strong>Ishan Roshan</strong></td>
+        <td>Verified Senior Researcher</td>
+        <td>Materials Science & Bioengineering</td>
+        <td>Holds verified Laser Safety Level 2 and Cleanroom Level 100 credentials. Demonstrates immediate eligibility, pre-flight check-in baseline, and return handover.</td>
+      </tr>
+      <tr>
+        <td><strong>Shray Shayus</strong></td>
+        <td>Student / Creator</td>
+        <td>Mechanical Engineering</td>
+        <td>Unverified operator. Demonstrates prerequisite gating ("Missing Certification"), uploading proof, and transparent waitlist queue placement.</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2>5. 3-Minute Quick Judge Walkthrough Script</h2>
+  <ol style="margin-left: 20px; font-size: 9.5pt; color: #334155; line-height: 1.6;">
+    <li><strong>Explore Catalog as Ishan Roshan:</strong> Notice the green <em>"Verified & Ready"</em> badge on the Scanning Electron Microscope. Click <em>"Request Access"</em> and submit a timeslot with your research purpose.</li>
+    <li><strong>Switch to Muskan Gupta (Manager):</strong> Open the <em>"Approvals"</em> tab. Review Ishan's 94/100 FairShare score and qualifications. Type an approval rationale and click <em>"Approve Reservation"</em>.</li>
+    <li><strong>Switch back to Ishan Roshan:</strong> Go to <em>"Reservations"</em>. Click <em>"Step 7: Check-In Baseline"</em>. Complete the emergency stop check, calibration test, cleanliness rating, and unlock the tool.</li>
+    <li><strong>Perform Return Inspection:</strong> Click <em>"Step 8: Return Inspection"</em>. Notice the side-by-side Before vs. After condition comparison card. Sign off on return to earn +2 FairShare reputation points!</li>
+    <li><strong>Audit Ledger Inspection:</strong> Click <em>"Audit Trail"</em> to verify the tamper-evident, cryptographically timestamped compliance history and inspect raw JSON metadata.</li>
+  </ol>
+
+  <h2>6. Technical Architecture & Stack</h2>
+  <div class="card-grid">
+    <div class="card">
+      <h4>Frontend & UI/UX</h4>
+      <p>Next.js 14 (App Router), React 18, TypeScript, Tailwind CSS, Lucide React icons, and Canvas Confetti. Styled with the Deep Industrial Amber & Haas Gold foundry theme.</p>
+    </div>
+    <div class="card">
+      <h4>Data & Governance</h4>
+      <p>Supabase PostgreSQL with Row-Level Security (RLS) policies, reactive offline-ready store hydration, and automated waitlist promotion upon cancellation.</p>
+    </div>
+  </div>
+
+  <h2>7. Hackathon Compliance & Open Source Disclosures</h2>
+  <p style="font-size: 9pt; color: #475569;">
+    Built entirely during the official 48-hour build window with 23 commits pushed to GitHub. Licensed under the permissive MIT Open-Source License. Fictional demo data used throughout. Fully compliant with Hackathon Rule 12 (important access and penalty decisions require human-in-the-loop explainability rather than unexplained black-box automation).
+  </p>
+
+  <div class="links-box">
+    <strong>Official Submission Links:</strong><br>
+    • <strong>Live Deployed Web Application:</strong> <a href="https://codehack-equishare.vercel.app/" target="_blank">https://codehack-equishare.vercel.app/</a><br>
+    • <strong>Public GitHub Repository:</strong> <a href="https://github.com/muskan5572/codehack-equishare" target="_blank">https://github.com/muskan5572/codehack-equishare</a>
+  </div>
+
+  <div class="footer">
+    <span>EquiShare • CodeHack Hackathon 48-Hour Submission</span>
+    <span>Page 2 of 2</span>
+  </div>
+
+</body>
+</html>
