@@ -7,7 +7,7 @@
 
 ## 🚀 Live Demo & Repository
 - **GitHub Repository:** [https://github.com/muskan5572/codehack-equishare](https://github.com/muskan5572/codehack-equishare)
-- **Live Deployment:** [Vercel Deployment URL](https://equishare.vercel.app) *(or run locally via `npm run dev` on `http://localhost:3000`)*
+- **Live Deployment:** [https://codehack-equishare.vercel.app/](https://codehack-equishare.vercel.app/)
 
 ---
 
