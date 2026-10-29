@@ -85,11 +85,11 @@ export const EligibilityModal: React.FC<EligibilityModalProps> = ({
 
         {/* Header */}
         <div className="flex items-start gap-4 mb-6">
-          <div className="w-12 h-12 rounded-xl bg-teal-500/10 border border-teal-500/30 flex items-center justify-center shrink-0">
-            <ShieldCheck className="w-6 h-6 text-teal-400" />
+          <div className="w-12 h-12 rounded-xl bg-amber-500/10 border border-amber-500/30 flex items-center justify-center shrink-0">
+            <ShieldCheck className="w-6 h-6 text-amber-400" />
           </div>
           <div>
-            <span className="text-xs font-semibold text-teal-400 tracking-wider uppercase">
+            <span className="text-xs font-semibold text-amber-400 tracking-wider uppercase">
               Eligibility & Safety Verification
             </span>
             <h2 className="text-xl font-bold text-white mt-0.5">{resource.title}</h2>
@@ -120,7 +120,7 @@ export const EligibilityModal: React.FC<EligibilityModalProps> = ({
           <div className="space-y-1.5 text-xs text-slate-300">
             {fairUse.reasons.map((reason, idx) => (
               <div key={idx} className="flex items-start gap-2">
-                <span className="text-teal-400 font-bold">•</span>
+                <span className="text-amber-400 font-bold">•</span>
                 <span>{reason}</span>
               </div>
             ))}
@@ -172,7 +172,7 @@ export const EligibilityModal: React.FC<EligibilityModalProps> = ({
                   {!isVerified && !isPending && (
                     <button
                       onClick={() => handleQuickUploadMissing(cred)}
-                      className="px-3 py-1.5 bg-teal-500/10 hover:bg-teal-500/20 text-teal-300 text-xs font-semibold rounded-lg border border-teal-500/30 transition-colors shrink-0"
+                      className="px-3 py-1.5 bg-amber-500/10 hover:bg-amber-500/20 text-amber-300 text-xs font-semibold rounded-lg border border-amber-500/30 transition-colors shrink-0"
                     >
                       Submit Proof
                     </button>
@@ -207,7 +207,7 @@ export const EligibilityModal: React.FC<EligibilityModalProps> = ({
         {/* 3. Upload / Request Custom Qualification */}
         <div className="mb-6 p-4 rounded-xl bg-slate-950/60 border border-slate-800">
           <h4 className="text-xs font-bold text-slate-300 uppercase tracking-wider mb-2 flex items-center gap-1.5">
-            <Upload className="w-3.5 h-3.5 text-teal-400" />
+            <Upload className="w-3.5 h-3.5 text-amber-400" />
             Submit Safety Credential or Training Certificate
           </h4>
 
@@ -224,11 +224,11 @@ export const EligibilityModal: React.FC<EligibilityModalProps> = ({
               placeholder="Certification Title (e.g. CNC Operator)"
               value={customCredName}
               onChange={e => setCustomCredName(e.target.value)}
-              className="px-3 py-2 bg-slate-900 border border-slate-700 rounded-lg text-xs text-white placeholder-slate-500 focus:outline-none focus:border-teal-500 sm:col-span-2"
+              className="px-3 py-2 bg-slate-900 border border-slate-700 rounded-lg text-xs text-white placeholder-slate-500 focus:outline-none focus:border-amber-500 sm:col-span-2"
             />
             <button
               type="submit"
-              className="px-3 py-2 bg-slate-800 hover:bg-slate-700 text-teal-300 border border-slate-700 rounded-lg text-xs font-semibold transition-colors"
+              className="px-3 py-2 bg-slate-800 hover:bg-slate-700 text-amber-300 border border-slate-700 rounded-lg text-xs font-semibold transition-colors"
             >
               Upload Certificate
             </button>
@@ -248,7 +248,7 @@ export const EligibilityModal: React.FC<EligibilityModalProps> = ({
               onClose();
               onRequestBooking(resource);
             }}
-            className="px-5 py-2 rounded-lg bg-teal-500 hover:bg-teal-400 text-slate-950 font-bold text-xs shadow-lg shadow-teal-500/25 transition-all"
+            className="px-5 py-2 rounded-lg bg-gradient-to-r from-amber-500 via-amber-400 to-orange-500 hover:from-amber-400 hover:to-orange-400 text-slate-950 font-bold text-xs shadow-lg shadow-amber-500/25 transition-all"
           >
             Continue to Reservation
           </button>

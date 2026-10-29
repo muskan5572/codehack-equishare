@@ -110,7 +110,7 @@ export const ManagerApprovalCard: React.FC<ManagerApprovalCardProps> = ({
         <div className="flex items-center justify-between mb-4">
           <div>
             <h2 className="text-xl font-bold text-white flex items-center gap-2">
-              <ShieldCheck className="w-6 h-6 text-teal-400" />
+              <ShieldCheck className="w-6 h-6 text-amber-400" />
               Manager Access Review & Decision Desk
             </h2>
             <p className="text-xs text-slate-400 mt-1">
@@ -158,7 +158,7 @@ export const ManagerApprovalCard: React.FC<ManagerApprovalCardProps> = ({
                           <span className={`text-xs px-2.5 py-0.5 rounded-full font-bold uppercase ${
                             booking.status === 'waitlisted'
                               ? 'bg-amber-950 text-amber-300 border border-amber-700/50'
-                              : 'bg-teal-950 text-teal-300 border border-teal-700/50'
+                              : 'bg-amber-950/80 text-amber-300 border border-amber-500/50'
                           }`}>
                             {booking.status === 'waitlisted' ? `Waitlist Queue #${booking.waitlist_position}` : 'Pending Review'}
                           </span>
@@ -166,7 +166,7 @@ export const ManagerApprovalCard: React.FC<ManagerApprovalCardProps> = ({
                             Requested {new Date(booking.created_at).toLocaleDateString()}
                           </span>
                         </div>
-                        <span className="text-xs font-semibold text-teal-400 bg-slate-800 px-2 py-0.5 rounded">
+                        <span className="text-xs font-semibold text-amber-400 bg-slate-800 px-2 py-0.5 rounded">
                           {resource?.category}
                         </span>
                       </div>
@@ -174,7 +174,7 @@ export const ManagerApprovalCard: React.FC<ManagerApprovalCardProps> = ({
                       <div>
                         <h3 className="text-lg font-bold text-white">{resource?.title}</h3>
                         <p className="text-xs text-slate-400 flex items-center gap-1 mt-0.5">
-                          <MapPin className="w-3.5 h-3.5 text-teal-400" />
+                          <MapPin className="w-3.5 h-3.5 text-amber-400" />
                           {resource?.location}
                         </p>
                       </div>
@@ -211,7 +211,7 @@ export const ManagerApprovalCard: React.FC<ManagerApprovalCardProps> = ({
                       <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
                         <div className="p-3 bg-slate-950/60 rounded-lg border border-slate-800">
                           <span className="text-slate-400 flex items-center gap-1 mb-1">
-                            <Calendar className="w-3.5 h-3.5 text-teal-400" />
+                            <Calendar className="w-3.5 h-3.5 text-amber-400" />
                             Timeslot Requested:
                           </span>
                           <p className="text-white font-medium">
@@ -223,7 +223,7 @@ export const ManagerApprovalCard: React.FC<ManagerApprovalCardProps> = ({
 
                         <div className="p-3 bg-slate-950/60 rounded-lg border border-slate-800">
                           <span className="text-slate-400 flex items-center gap-1 mb-1">
-                            <ShieldCheck className="w-3.5 h-3.5 text-teal-400" />
+                            <ShieldCheck className="w-3.5 h-3.5 text-amber-400" />
                             Safety Clearance:
                           </span>
                           {hasAllCreds ? (
@@ -250,7 +250,7 @@ export const ManagerApprovalCard: React.FC<ManagerApprovalCardProps> = ({
                     <div className="bg-slate-950/80 rounded-xl p-5 border border-slate-800 flex flex-col justify-between">
                       <div>
                         <h4 className="text-xs font-bold text-slate-300 uppercase tracking-wider mb-2 flex items-center gap-1.5">
-                          <Sparkles className="w-3.5 h-3.5 text-teal-400" />
+                          <Sparkles className="w-3.5 h-3.5 text-amber-400" />
                           "Why This Decision" Rationale
                         </h4>
                         <p className="text-[11px] text-slate-400 mb-3">
@@ -261,14 +261,14 @@ export const ManagerApprovalCard: React.FC<ManagerApprovalCardProps> = ({
                           placeholder="e.g., Operator credentials verified. Cross-department quota permitted approval."
                           value={decisionNotes[booking.id] || ''}
                           onChange={e => setDecisionNotes({ ...decisionNotes, [booking.id]: e.target.value })}
-                          className="w-full px-3 py-2 bg-slate-900 border border-slate-700 rounded-lg text-xs text-white placeholder-slate-500 focus:outline-none focus:border-teal-500 resize-none"
+                          className="w-full px-3 py-2 bg-slate-900 border border-slate-700 rounded-lg text-xs text-white placeholder-slate-500 focus:outline-none focus:border-amber-500 resize-none"
                         />
                       </div>
 
                       <div className="space-y-2 pt-4">
                         <button
                           onClick={() => handleApprove(booking.id)}
-                          className="w-full py-2.5 px-4 bg-teal-500 hover:bg-teal-400 text-slate-950 font-bold text-xs rounded-xl shadow-lg shadow-teal-500/25 transition-all flex items-center justify-center gap-1.5"
+                          className="w-full py-2.5 px-4 bg-gradient-to-r from-amber-500 via-amber-400 to-orange-500 hover:from-amber-400 hover:to-orange-400 text-slate-950 font-bold text-xs rounded-xl shadow-lg shadow-amber-500/25 transition-all flex items-center justify-center gap-1.5"
                         >
                           <CheckCircle2 className="w-4 h-4" />
                           Approve Reservation

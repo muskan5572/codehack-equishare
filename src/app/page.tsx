@@ -85,7 +85,7 @@ export default function Home() {
   const myBookings = store.bookings.filter(b => b.user_id === store.currentUser.id);
 
   return (
-    <div className="min-h-screen text-slate-100 flex flex-col font-sans selection:bg-teal-500/30 selection:text-teal-200">
+    <div className="min-h-screen text-slate-100 flex flex-col font-sans selection:bg-amber-500/30 selection:text-amber-200">
       
       {/* 1. Judge Demo Header (1-Click Switcher) */}
       <RoleSwitcher
@@ -118,15 +118,15 @@ export default function Home() {
           <div className="space-y-8">
             
             {/* Hero / Banner with High-Tech Ambient Depth */}
-            <div className="relative rounded-3xl bg-gradient-to-br from-slate-900/90 via-slate-900/60 to-teal-950/40 p-8 sm:p-10 border border-slate-800/80 overflow-hidden shadow-2xl backdrop-blur-xl">
+            <div className="relative rounded-3xl bg-gradient-to-br from-slate-900/90 via-slate-900/60 to-amber-950/30 p-8 sm:p-10 border border-slate-800/80 overflow-hidden shadow-2xl backdrop-blur-xl">
               
               {/* Background ambient radial light */}
-              <div className="absolute top-0 right-0 w-96 h-96 bg-teal-500/10 rounded-full blur-3xl pointer-events-none -mr-20 -mt-20" />
-              <div className="absolute bottom-0 left-1/3 w-80 h-80 bg-indigo-500/10 rounded-full blur-3xl pointer-events-none" />
+              <div className="absolute top-0 right-0 w-96 h-96 bg-amber-500/10 rounded-full blur-3xl pointer-events-none -mr-20 -mt-20" />
+              <div className="absolute bottom-0 left-1/3 w-80 h-80 bg-orange-500/10 rounded-full blur-3xl pointer-events-none" />
 
               <div className="relative z-10 max-w-3xl space-y-4">
-                <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-gradient-to-r from-teal-500/20 via-emerald-500/15 to-transparent border border-teal-500/30 text-xs font-bold text-teal-300 shadow-sm shadow-teal-500/10">
-                  <Sparkles className="w-3.5 h-3.5 text-teal-400" />
+                <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-gradient-to-r from-amber-500/20 via-orange-500/15 to-transparent border border-amber-500/40 text-xs font-bold text-amber-300 shadow-sm shadow-amber-500/10">
+                  <Sparkles className="w-3.5 h-3.5 text-amber-400" />
                   <span>Institutional Resource Sharing & Safety Protocol</span>
                 </div>
                 
@@ -160,7 +160,7 @@ export default function Home() {
                         key={idx}
                         className="bg-slate-950/70 text-slate-300 border border-slate-800 px-2.5 py-1 rounded-md font-medium flex items-center gap-1 shadow-sm"
                       >
-                        <Check className="w-3 h-3 text-teal-400 stroke-[3]" />
+                        <Check className="w-3 h-3 text-amber-400 stroke-[3]" />
                         {step}
                       </span>
                     ))}
@@ -172,11 +172,11 @@ export default function Home() {
                   <div className="glass-card p-3.5 rounded-2xl border border-slate-800/80">
                     <p className="text-slate-400 font-medium">Listed Resources</p>
                     <p className="text-2xl font-black text-white mt-1">{store.resources.length}</p>
-                    <span className="text-[10px] text-teal-400 font-semibold">Across 4 Depts</span>
+                    <span className="text-[10px] text-amber-400 font-semibold">Across 4 Depts</span>
                   </div>
                   <div className="glass-card p-3.5 rounded-2xl border border-slate-800/80">
                     <p className="text-slate-400 font-medium">Available Now</p>
-                    <p className="text-2xl font-black text-teal-400 mt-1">
+                    <p className="text-2xl font-black text-amber-400 mt-1">
                       {store.resources.filter(r => r.availability_status === 'available').length}
                     </p>
                     <span className="text-[10px] text-emerald-400 font-semibold">Ready for booking</span>
@@ -207,7 +207,7 @@ export default function Home() {
                   placeholder="Search equipment, laboratories, tools, or locations (e.g. CNC, SEM, Laser)..."
                   value={searchQuery}
                   onChange={e => setSearchQuery(e.target.value)}
-                  className="w-full pl-10 pr-4 py-2.5 bg-slate-950 border border-slate-800 rounded-xl text-xs text-white placeholder-slate-500 focus:outline-none focus:border-teal-500 transition-colors shadow-inner"
+                  className="w-full pl-10 pr-4 py-2.5 bg-slate-950 border border-slate-800 rounded-xl text-xs text-white placeholder-slate-500 focus:outline-none focus:border-amber-500 transition-colors shadow-inner"
                 />
               </div>
 
@@ -222,7 +222,7 @@ export default function Home() {
                       onClick={() => setSelectedCategory(item.id)}
                       className={`px-3 py-2 rounded-xl transition-all font-semibold flex items-center gap-1.5 ${
                         isSelected
-                          ? 'bg-gradient-to-r from-teal-500 to-emerald-500 text-slate-950 font-bold shadow-md shadow-teal-500/20'
+                          ? 'bg-gradient-to-r from-amber-500 via-amber-400 to-orange-500 text-slate-950 font-bold shadow-md shadow-amber-500/25'
                           : 'bg-slate-950/80 text-slate-400 hover:text-white hover:bg-slate-800 border border-slate-800'
                       }`}
                     >
@@ -259,7 +259,7 @@ export default function Home() {
             <div className="flex items-center justify-between">
               <div>
                 <h2 className="text-xl font-bold text-white flex items-center gap-2">
-                  <CalendarClock className="w-6 h-6 text-teal-400" />
+                  <CalendarClock className="w-6 h-6 text-amber-400" />
                   Your Active Reservations & Handover Desk
                 </h2>
                 <p className="text-xs text-slate-400 mt-1">
@@ -267,7 +267,7 @@ export default function Home() {
                 </p>
               </div>
               <span className="text-xs text-slate-400">
-                Logged in as: <strong className="text-teal-300">{store.currentUser.full_name}</strong>
+                Logged in as: <strong className="text-amber-300">{store.currentUser.full_name}</strong>
               </span>
             </div>
 
@@ -280,7 +280,7 @@ export default function Home() {
                 </p>
                 <button
                   onClick={() => setActiveTab('browse')}
-                  className="px-4 py-2 bg-gradient-to-r from-teal-500 to-emerald-500 text-slate-950 font-bold text-xs rounded-xl shadow-lg transition-transform hover:scale-105"
+                  className="px-4 py-2 bg-gradient-to-r from-amber-500 via-amber-400 to-orange-500 text-slate-950 font-bold text-xs rounded-xl shadow-lg transition-transform hover:scale-105"
                 >
                   Browse Available Equipment
                 </button>
@@ -299,7 +299,7 @@ export default function Home() {
                   return (
                     <div
                       key={booking.id}
-                      className="bg-slate-900/80 border border-slate-800 rounded-3xl p-6 hover:border-slate-700 transition-all shadow-xl backdrop-blur-md"
+                      className="bg-slate-900/80 border border-slate-800 rounded-3xl p-6 hover:border-amber-500/30 transition-all shadow-xl backdrop-blur-md"
                     >
                       <div className="flex flex-wrap items-start justify-between gap-4">
                         
@@ -313,8 +313,8 @@ export default function Home() {
                               </span>
                             )}
                             {booking.status === 'checked_in' && (
-                              <span className="bg-teal-950/80 text-teal-300 border border-teal-600/50 text-xs px-3 py-1 rounded-full font-bold flex items-center gap-1.5 animate-pulse shadow-sm">
-                                <Unlock className="w-3.5 h-3.5 text-teal-400" />
+                              <span className="bg-amber-950/80 text-amber-300 border border-amber-500/60 text-xs px-3 py-1 rounded-full font-bold flex items-center gap-1.5 animate-pulse shadow-sm">
+                                <Unlock className="w-3.5 h-3.5 text-amber-400" />
                                 Checked In (Session Active)
                               </span>
                             )}
@@ -332,7 +332,7 @@ export default function Home() {
                             )}
                             {booking.status === 'returned' && (
                               <span className="bg-slate-800 text-slate-300 border border-slate-700 text-xs px-3 py-1 rounded-full font-medium flex items-center gap-1.5 shadow-sm">
-                                <CheckCircle2 className="w-3.5 h-3.5 text-teal-400" />
+                                <CheckCircle2 className="w-3.5 h-3.5 text-amber-400" />
                                 Completed & Returned
                               </span>
                             )}
@@ -365,7 +365,7 @@ export default function Home() {
                               "{booking.purpose_summary}"
                             </p>
                             {booking.decision_reason && (
-                              <p className="text-teal-400 pt-1 text-[11px] border-t border-slate-800">
+                              <p className="text-amber-400 pt-1 text-[11px] border-t border-slate-800">
                                 <strong>Decision Reason:</strong> {booking.decision_reason}
                               </p>
                             )}
@@ -379,7 +379,7 @@ export default function Home() {
                           {booking.status === 'approved' && (
                             <button
                               onClick={() => setCheckInBooking(booking)}
-                              className="w-full py-3 px-4 bg-gradient-to-r from-teal-500 to-emerald-500 hover:from-teal-400 hover:to-emerald-400 text-slate-950 font-bold text-xs rounded-xl shadow-lg shadow-teal-500/25 transition-all flex items-center justify-center gap-1.5"
+                              className="w-full py-3 px-4 bg-gradient-to-r from-amber-500 via-amber-400 to-orange-500 hover:from-amber-400 hover:to-orange-400 text-slate-950 font-bold text-xs rounded-xl shadow-lg shadow-amber-500/25 transition-all flex items-center justify-center gap-1.5"
                             >
                               <CheckCircle2 className="w-4 h-4" />
                               Step 7: Check-In Baseline
@@ -391,7 +391,7 @@ export default function Home() {
                             <>
                               <button
                                 onClick={() => setCheckOutBooking(booking)}
-                                className="w-full py-3 px-4 bg-gradient-to-r from-emerald-500 to-teal-400 hover:from-emerald-400 hover:to-teal-300 text-slate-950 font-bold text-xs rounded-xl shadow-lg shadow-emerald-500/25 transition-all flex items-center justify-center gap-1.5"
+                                className="w-full py-3 px-4 bg-gradient-to-r from-orange-500 via-amber-400 to-amber-500 hover:from-orange-400 hover:to-amber-400 text-slate-950 font-bold text-xs rounded-xl shadow-lg shadow-orange-500/25 transition-all flex items-center justify-center gap-1.5"
                               >
                                 <RotateCcw className="w-4 h-4" />
                                 Step 8: Return Inspection
@@ -422,7 +422,7 @@ export default function Home() {
                           {/* Condition Record Badges if completed */}
                           {checkIn && (
                             <div className="p-2.5 bg-slate-950/60 border border-slate-800 rounded-xl text-[11px] text-slate-300">
-                              <span className="text-teal-400 font-semibold">Check-in Baseline:</span> {checkIn.physical_condition.toUpperCase()} ({checkIn.cleanliness_rating}/5★)
+                              <span className="text-amber-400 font-semibold">Check-in Baseline:</span> {checkIn.physical_condition.toUpperCase()} ({checkIn.cleanliness_rating}/5★)
                             </div>
                           )}
 
@@ -546,9 +546,9 @@ export default function Home() {
       {/* ======================================================== */}
       {toastMessage && (
         <div className="fixed bottom-6 right-6 z-50 animate-in slide-in-from-bottom-5 duration-300">
-          <div className="bg-slate-900 border border-teal-500/50 text-white px-4 py-3 rounded-2xl shadow-2xl flex items-center gap-3 text-xs max-w-sm backdrop-blur-xl">
-            <div className="w-7 h-7 rounded-full bg-teal-500/20 border border-teal-500/40 flex items-center justify-center shrink-0">
-              <Sparkles className="w-4 h-4 text-teal-400" />
+          <div className="bg-slate-900 border border-amber-500/50 text-white px-4 py-3 rounded-2xl shadow-2xl flex items-center gap-3 text-xs max-w-sm backdrop-blur-xl">
+            <div className="w-7 h-7 rounded-full bg-amber-500/20 border border-amber-500/40 flex items-center justify-center shrink-0">
+              <Sparkles className="w-4 h-4 text-amber-400" />
             </div>
             <span className="font-medium text-slate-200 flex-1 leading-snug">{toastMessage}</span>
             <button 

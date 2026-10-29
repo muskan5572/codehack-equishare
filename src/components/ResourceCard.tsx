@@ -42,7 +42,7 @@ export const ResourceCard: React.FC<ResourceCardProps> = ({
   const isEligible = missingCredentials.length === 0;
 
   return (
-    <div className="bg-slate-900/70 border border-slate-800/80 rounded-2xl overflow-hidden shadow-xl hover:border-teal-500/40 hover:shadow-2xl hover:shadow-teal-500/10 transition-all duration-300 hover:-translate-y-1 flex flex-col group backdrop-blur-md">
+    <div className="bg-slate-900/70 border border-slate-800/80 rounded-2xl overflow-hidden shadow-xl hover:border-amber-500/50 hover:shadow-2xl hover:shadow-amber-500/15 transition-all duration-300 hover:-translate-y-1 flex flex-col group backdrop-blur-md">
       
       {/* Image Banner & Overlays */}
       <div className="relative h-52 w-full overflow-hidden bg-slate-950">
@@ -55,7 +55,7 @@ export const ResourceCard: React.FC<ResourceCardProps> = ({
         
         {/* Top Badges */}
         <div className="absolute top-3 left-3 flex flex-wrap gap-1.5">
-          <span className="bg-slate-950/80 backdrop-blur-md text-teal-300 border border-teal-500/30 text-xs px-2.5 py-1 rounded-lg font-bold shadow-sm">
+          <span className="bg-slate-950/90 backdrop-blur-md text-amber-300 border border-amber-500/40 text-xs px-2.5 py-1 rounded-lg font-bold shadow-sm">
             {resource.category}
           </span>
           {resource.availability_status === 'available' && (
@@ -75,7 +75,7 @@ export const ResourceCard: React.FC<ResourceCardProps> = ({
         {/* Location & Deposit Pill */}
         <div className="absolute bottom-3 left-3 right-3 flex items-center justify-between text-xs text-slate-300">
           <div className="flex items-center gap-1.5 bg-slate-950/90 backdrop-blur-md px-2.5 py-1 rounded-lg border border-slate-700/80">
-            <MapPin className="w-3.5 h-3.5 text-teal-400" />
+            <MapPin className="w-3.5 h-3.5 text-amber-400" />
             <span className="truncate max-w-[190px] font-medium">{resource.location}</span>
           </div>
           {resource.deposit_required > 0 && (
@@ -91,10 +91,10 @@ export const ResourceCard: React.FC<ResourceCardProps> = ({
       <div className="p-5 flex-1 flex flex-col justify-between space-y-4">
         <div>
           <div className="flex items-center gap-2 text-xs text-slate-400 mb-1">
-            <span className="text-teal-400 font-semibold">{resource.department}</span>
+            <span className="text-amber-400 font-semibold">{resource.department}</span>
           </div>
 
-          <h3 className="text-lg font-bold text-white group-hover:text-teal-300 transition-colors line-clamp-1">
+          <h3 className="text-lg font-bold text-white group-hover:text-amber-300 transition-colors line-clamp-1">
             {resource.title}
           </h3>
 
@@ -124,7 +124,7 @@ export const ResourceCard: React.FC<ResourceCardProps> = ({
           {resource.required_credentials.length > 0 && (
             <div className="mt-4 pt-3 border-t border-slate-800/80">
               <p className="text-[11px] font-bold text-slate-400 uppercase tracking-wider mb-2 flex items-center gap-1">
-                <ShieldCheck className="w-3 h-3 text-teal-400" />
+                <ShieldCheck className="w-3 h-3 text-amber-400" />
                 Prerequisites & Operator Clearance:
               </p>
               <div className="flex flex-wrap gap-1.5">
@@ -179,7 +179,7 @@ export const ResourceCard: React.FC<ResourceCardProps> = ({
             </button>
             <button
               onClick={() => onRequestBooking(resource)}
-              className="px-3 py-2.5 rounded-xl bg-gradient-to-r from-teal-500 to-emerald-500 hover:from-teal-400 hover:to-emerald-400 text-slate-950 font-bold text-xs shadow-lg shadow-teal-500/25 transition-all flex items-center justify-center gap-1 group/btn"
+              className="px-3 py-2.5 rounded-xl bg-gradient-to-r from-amber-500 via-amber-400 to-orange-500 hover:from-amber-400 hover:to-orange-400 text-slate-950 font-bold text-xs shadow-lg shadow-amber-500/25 transition-all flex items-center justify-center gap-1 group/btn"
             >
               <span>Request Access</span>
               <ArrowRight className="w-3.5 h-3.5 group-hover/btn:translate-x-0.5 transition-transform" />

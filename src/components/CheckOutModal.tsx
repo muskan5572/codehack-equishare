@@ -92,11 +92,11 @@ export const CheckOutModal: React.FC<CheckOutModalProps> = ({
 
         {/* Header */}
         <div className="flex items-start gap-4 mb-6">
-          <div className="w-12 h-12 rounded-xl bg-teal-500/10 border border-teal-500/30 flex items-center justify-center shrink-0">
-            <RotateCcw className="w-6 h-6 text-teal-400" />
+          <div className="w-12 h-12 rounded-xl bg-amber-500/10 border border-amber-500/30 flex items-center justify-center shrink-0">
+            <RotateCcw className="w-6 h-6 text-amber-400" />
           </div>
           <div>
-            <span className="text-xs font-semibold text-teal-400 tracking-wider uppercase">
+            <span className="text-xs font-semibold text-amber-400 tracking-wider uppercase">
               Step 8: Return Inspection & Condition Documentation
             </span>
             <h2 className="text-xl font-bold text-white mt-0.5">{resource.title}</h2>
@@ -110,7 +110,7 @@ export const CheckOutModal: React.FC<CheckOutModalProps> = ({
         <div className="mb-6 grid grid-cols-1 sm:grid-cols-2 gap-4 p-4 rounded-xl bg-slate-950/60 border border-slate-800 text-xs">
           {/* Baseline Check-in Column */}
           <div className="p-3 bg-slate-900/80 rounded-lg border border-slate-800 space-y-2">
-            <span className="font-bold text-teal-400 uppercase tracking-wider text-[11px] block">
+            <span className="font-bold text-amber-400 uppercase tracking-wider text-[11px] block">
               1. Check-In Baseline Record
             </span>
             <div className="flex items-center justify-between">
@@ -132,7 +132,7 @@ export const CheckOutModal: React.FC<CheckOutModalProps> = ({
 
           {/* Current Return State Column */}
           <div className="p-3 bg-slate-900/80 rounded-lg border border-slate-800 space-y-2">
-            <span className="font-bold text-teal-400 uppercase tracking-wider text-[11px] block">
+            <span className="font-bold text-amber-400 uppercase tracking-wider text-[11px] block">
               2. Return Sign-off State
             </span>
             <div className="flex items-center justify-between">
@@ -243,7 +243,7 @@ export const CheckOutModal: React.FC<CheckOutModalProps> = ({
               value={notes}
               onChange={e => setNotes(e.target.value)}
               placeholder="e.g., Vacuum chamber vented, machine turned off, lenses wiped with optical cloth..."
-              className="w-full px-3 py-2 bg-slate-800 border border-slate-700 rounded-lg text-xs text-white placeholder-slate-500 focus:outline-none focus:border-teal-500"
+              className="w-full px-3 py-2 bg-slate-800 border border-slate-700 rounded-lg text-xs text-white placeholder-slate-500 focus:outline-none focus:border-amber-500"
             />
           </div>
 
@@ -267,7 +267,7 @@ export const CheckOutModal: React.FC<CheckOutModalProps> = ({
             </button>
             <button
               type="submit"
-              className="px-6 py-2 rounded-lg bg-teal-500 hover:bg-teal-400 text-slate-950 font-bold text-xs shadow-lg shadow-teal-500/25 transition-all flex items-center gap-1.5"
+              className="px-6 py-2 rounded-lg bg-gradient-to-r from-amber-500 via-amber-400 to-orange-500 hover:from-amber-400 hover:to-orange-400 text-slate-950 font-bold text-xs shadow-lg shadow-amber-500/25 transition-all flex items-center gap-1.5"
             >
               <CheckCircle2 className="w-4 h-4" />
               Complete Return & Release Deposit

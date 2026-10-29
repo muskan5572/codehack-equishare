@@ -17,13 +17,13 @@ export const RoleSwitcher: React.FC<RoleSwitcherProps> = ({ currentUser, profile
         
         {/* Judge Demo Banner */}
         <div className="flex items-center gap-2.5">
-          <div className="flex items-center gap-1.5 bg-gradient-to-r from-teal-500/15 via-emerald-500/10 to-transparent px-3 py-1 rounded-full border border-teal-500/30 shadow-sm shadow-teal-500/10">
+          <div className="flex items-center gap-1.5 bg-gradient-to-r from-amber-500/20 via-orange-500/15 to-transparent px-3 py-1 rounded-full border border-amber-500/40 shadow-sm shadow-amber-500/10">
             <span className="relative flex h-2 w-2">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-teal-400 opacity-75"></span>
-              <span className="relative inline-flex rounded-full h-2 w-2 bg-teal-500"></span>
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-amber-400 opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-amber-500"></span>
             </span>
-            <span className="font-bold text-teal-300 tracking-wide uppercase text-[11px] flex items-center gap-1">
-              <Sparkles className="w-3 h-3 text-teal-400" />
+            <span className="font-bold text-amber-300 tracking-wide uppercase text-[11px] flex items-center gap-1">
+              <Sparkles className="w-3 h-3 text-amber-400" />
               Judge Sandbox
             </span>
           </div>
@@ -43,7 +43,7 @@ export const RoleSwitcher: React.FC<RoleSwitcherProps> = ({ currentUser, profile
                 onClick={() => onSwitch(persona.id)}
                 className={`flex items-center gap-2 px-3 py-1.5 rounded-lg text-xs font-semibold transition-all relative ${
                   isActive
-                    ? 'bg-gradient-to-r from-teal-500 to-emerald-500 text-slate-950 font-bold shadow-lg shadow-teal-500/25 ring-1 ring-teal-300'
+                    ? 'bg-gradient-to-r from-amber-500 via-amber-400 to-orange-500 text-slate-950 font-bold shadow-lg shadow-amber-500/30 ring-1 ring-amber-300'
                     : 'text-slate-300 hover:text-white hover:bg-slate-800/70'
                 }`}
               >

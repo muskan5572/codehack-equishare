@@ -82,7 +82,7 @@ export const AuditTimeline: React.FC<AuditTimelineProps> = ({ logs }) => {
       <div className="flex flex-wrap items-center justify-between gap-4">
         <div>
           <h2 className="text-xl font-bold text-white flex items-center gap-2">
-            <Fingerprint className="w-6 h-6 text-teal-400" />
+            <Fingerprint className="w-6 h-6 text-amber-400" />
             Immutable Audit Trail & Compliance Ledger
           </h2>
           <p className="text-xs text-slate-400 mt-1">
@@ -90,8 +90,8 @@ export const AuditTimeline: React.FC<AuditTimelineProps> = ({ logs }) => {
           </p>
         </div>
 
-        <span className="text-xs font-semibold px-3 py-1 rounded-full bg-teal-950/80 text-teal-300 border border-teal-800 flex items-center gap-1.5">
-          <ShieldCheck className="w-3.5 h-3.5 text-teal-400" />
+        <span className="text-xs font-semibold px-3 py-1 rounded-full bg-amber-950/80 text-amber-300 border border-amber-600/50 flex items-center gap-1.5">
+          <ShieldCheck className="w-3.5 h-3.5 text-amber-400" />
           Auditable Ledger Verified
         </span>
       </div>
@@ -105,7 +105,7 @@ export const AuditTimeline: React.FC<AuditTimelineProps> = ({ logs }) => {
             placeholder="Search by actor, action, or keyword..."
             value={searchTerm}
             onChange={e => setSearchTerm(e.target.value)}
-            className="w-full pl-9 pr-3 py-2 bg-slate-950 border border-slate-800 rounded-xl text-xs text-white placeholder-slate-500 focus:outline-none focus:border-teal-500"
+            className="w-full pl-9 pr-3 py-2 bg-slate-950 border border-slate-800 rounded-xl text-xs text-white placeholder-slate-500 focus:outline-none focus:border-amber-500"
           />
         </div>
 
@@ -122,7 +122,7 @@ export const AuditTimeline: React.FC<AuditTimelineProps> = ({ logs }) => {
               onClick={() => setFilterAction(tab.id)}
               className={`px-3 py-1.5 rounded-lg font-medium transition-colors ${
                 filterAction === tab.id
-                  ? 'bg-teal-500 text-slate-950 font-bold'
+                  ? 'bg-gradient-to-r from-amber-500 via-amber-400 to-orange-500 text-slate-950 font-bold'
                   : 'text-slate-400 hover:text-white hover:bg-slate-800'
               }`}
             >
@@ -177,7 +177,7 @@ export const AuditTimeline: React.FC<AuditTimelineProps> = ({ logs }) => {
 
                 {/* Expanded JSON Inspector */}
                 {isExpanded && log.metadata && (
-                  <div className="mt-3 p-3 rounded-lg bg-slate-900 border border-slate-800 font-mono text-[11px] text-teal-300/90 overflow-x-auto">
+                  <div className="mt-3 p-3 rounded-lg bg-slate-900 border border-slate-800 font-mono text-[11px] text-amber-300/90 overflow-x-auto">
                     <pre>{JSON.stringify(log.metadata, null, 2)}</pre>
                   </div>
                 )}
