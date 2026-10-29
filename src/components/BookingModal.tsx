@@ -49,7 +49,7 @@ export const BookingModal: React.FC<BookingModalProps> = ({
   const [endTime, setEndTime] = useState('12:00');
   const [purpose, setPurpose] = useState('');
   const [supervisor, setSupervisor] = useState(
-    resource.supervision_required ? 'Dr. Aris Thorne' : ''
+    resource.supervision_required ? 'Muskan Gupta' : ''
   );
   const [errorMsg, setErrorMsg] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);

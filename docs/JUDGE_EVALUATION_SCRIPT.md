@@ -2,21 +2,21 @@
 
 This script allows an evaluator to test every requirement of the hackathon in under 3 minutes:
 
-## Scene 1: Discovery & Live Eligibility (Persona: Maya Lin)
-1. Ensure the top banner shows **Maya Lin (Researcher)**.
+## Scene 1: Discovery & Live Eligibility (Persona: Ishan Roshan)
+1. Ensure the top banner shows **Ishan Roshan (Researcher)**.
 2. In the **Catalog**, look at the **Jeol Scanning Electron Microscope (SEM)**.
-3. Observe the green badge: **"Verified & Ready"** (Maya possesses the verified *Class 100 Cleanroom* credential).
+3. Observe the green badge: **"Verified & Ready"** (Ishan possesses the verified *Class 100 Cleanroom* credential).
 4. Click **Request Access**, choose tomorrow's timeslot, and submit.
 
-## Scene 2: Manager Review Desk (Persona: Dr. Aris Thorne)
-1. In the top bar, click **Dr. Aris Thorne (Manager)**.
+## Scene 2: Manager Review Desk (Persona: Muskan Gupta)
+1. In the top bar, click **Muskan Gupta (Manager)**.
 2. Navigate to the **Review & Approvals** tab.
-3. Review Maya's 94/100 FairShare score and qualifications.
+3. Review Ishan's 94/100 FairShare score and qualifications.
 4. Type an approval rationale in the text box.
 5. Click **Approve Reservation** (celebratory confetti animation triggers).
 
-## Scene 3: Pre-Use Condition Baseline (Persona: Maya Lin)
-1. Switch back to **Maya Lin**.
+## Scene 3: Pre-Use Condition Baseline (Persona: Ishan Roshan)
+1. Switch back to **Ishan Roshan**.
 2. Navigate to **Reservations**.
 3. Click the green button: **"Step 7: Check-In Baseline"**.
 4. Check off the emergency stop test, calibration pass, rate cleanliness 5/5, and confirm check-in.

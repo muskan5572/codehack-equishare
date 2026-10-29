@@ -10,7 +10,7 @@ EquiShare is engineered using Next.js 14 App Router, TypeScript, and Supabase Po
 |  - RoleSwitcher (Judge Persona Sandbox: Manager / Researcher / Student)|
 |  - Catalog & Search (Live Prerequisite Validation Badges)              |
 |  - Handover Terminal (Step 7 Check-In & Step 8 Return Comparison)      |
-|  - Human-in-the-Loop Review Desk (Dr. Aris Thorne Approver Portal)     |
+|  - Human-in-the-Loop Review Desk (Muskan Gupta Approver Portal)         |
 |  - Compliance Ledger (Tamper-evident JSON Metadata Inspector)          |
 +------------------------------------------------------------------------+
                                     |

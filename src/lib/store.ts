@@ -22,10 +22,10 @@ import {
 } from './initialData';
 import { supabase, isSupabaseConfigured } from './supabase';
 
-const STORAGE_KEY = 'equishare_state_v1';
+const STORAGE_KEY = 'equishare_state_v2';
 
 export function useEquiShareStore() {
-  const [currentUser, setCurrentUser] = useState<Profile>(INITIAL_PROFILES[1]); // Default to Maya Lin
+  const [currentUser, setCurrentUser] = useState<Profile>(INITIAL_PROFILES[1]); // Default to Ishan Roshan
   const [profiles, setProfiles] = useState<Profile[]>(INITIAL_PROFILES);
   const [resources, setResources] = useState<Resource[]>(INITIAL_RESOURCES);
   const [bookings, setBookings] = useState<Booking[]>(INITIAL_BOOKINGS);

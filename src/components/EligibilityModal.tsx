@@ -214,7 +214,7 @@ export const EligibilityModal: React.FC<EligibilityModalProps> = ({
           {uploadSuccess && (
             <div className="mb-3 p-2.5 bg-emerald-950/80 border border-emerald-600/50 rounded-lg text-xs text-emerald-300 flex items-center gap-2">
               <CheckCircle2 className="w-4 h-4" />
-              Credential submitted successfully! Dr. Aris Thorne can now review and approve it.
+              Credential submitted successfully! Muskan Gupta can now review and approve it.
             </div>
           )}
 

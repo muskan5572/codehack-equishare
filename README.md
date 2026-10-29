@@ -36,9 +36,9 @@ For seamless evaluation, EquiShare includes a **1-Click Judge Role Switcher** at
 
 | Persona | Role | Department | Testing Purpose |
 | :--- | :--- | :--- | :--- |
-| **Dr. Aris Thorne** | Lab Director & Approver | Robotics & Fabrication Institute | Approves/rejects booking requests with explainable reasons, verifies submitted safety credentials, oversees damage disputes. |
-| **Maya Lin** | Verified Senior Researcher | Materials Science & Bioengineering | Holds verified Laser Safety & Cleanroom certificates. Eligible to book immediately, complete check-in baseline, and return equipment. |
-| **Alex Rivera** | Undergrad Student | Mechanical Engineering | Unverified operator. Demonstrates eligibility blockage, submitting safety certifications, and transparent waitlist queuing. |
+| **Muskan Gupta** | Lab Director & Approver | Robotics & Fabrication Institute | Approves/rejects booking requests with explainable reasons, verifies submitted safety credentials, oversees damage disputes. |
+| **Ishan Roshan** | Verified Senior Researcher | Materials Science & Bioengineering | Holds verified Laser Safety & Cleanroom certificates. Eligible to book immediately, complete check-in baseline, and return equipment. |
+| **Shray Shayus** | Undergrad Student | Mechanical Engineering | Unverified operator. Demonstrates eligibility blockage, submitting safety certifications, and transparent waitlist queuing. |
 
 ---
 
@@ -118,9 +118,9 @@ npm run dev
 Open [http://localhost:3000](http://localhost:3000) in your browser.
 
 ### Recommended 3-Minute Judge Walkthrough:
-1. **Browse as Maya Lin:** Notice the green *"Verified & Ready"* badge on the Scanning Electron Microscope. Click **Request Access** and submit a reservation.
-2. **Switch to Dr. Aris Thorne (Manager):** Click the top **Review & Approvals** tab. View Maya's 94/100 FairShare score. Type an approval note and click **Approve Reservation** (celebratory confetti triggers).
-3. **Switch back to Maya Lin:** Navigate to **Reservations**. Click **Step 7: Check-In Baseline**. Fill out the safety checklist and confirm check-in.
+1. **Browse as Ishan Roshan:** Notice the green *"Verified & Ready"* badge on the Scanning Electron Microscope. Click **Request Access** and submit a reservation.
+2. **Switch to Muskan Gupta (Manager):** Click the top **Review & Approvals** tab. View Ishan's 94/100 FairShare score. Type an approval note and click **Approve Reservation** (celebratory confetti triggers).
+3. **Switch back to Ishan Roshan:** Navigate to **Reservations**. Click **Step 7: Check-In Baseline**. Fill out the safety checklist and confirm check-in.
 4. **Complete Handover:** Click **Step 8: Return Inspection**. Observe the side-by-side comparison with the check-in baseline. Confirm return to earn +2 FairShare points!
 5. **View Compliance Ledger:** Click **Audit Trail** to see the complete, timestamped history of every decision.
 
